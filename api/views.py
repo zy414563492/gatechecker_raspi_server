@@ -144,27 +144,27 @@ def face(request):
         # randomNumber = uniform(20.0, 25.0)
         # random_string = get_random_string(8)
 
-        paylodmsg0 = "{"
-        paylodmsg1 = "\"log_id\": \""
-        paylodmsg2 = "\", \"temperature\":"
-        paylodmsg3 = ", \"time\": \""
-        paylodmsg4 = "\", \"is_blacklist\":"
-        paylodmsg5 = ", \"to_device\": \""
-        paylodmsg6 = "\"}"
-        paylodmsg = "{}{}{}{}{}{}{}{}{}{}{}{}".format(
-            paylodmsg0, paylodmsg1, rand_str(4), paylodmsg2, temperature, paylodmsg3,
-            str(machine_date), paylodmsg4, False, paylodmsg5, cid, paylodmsg6)
+        # paylodmsg0 = "{"
+        # paylodmsg1 = "\"log_id\": \""
+        # paylodmsg2 = "\", \"temperature\":"
+        # paylodmsg3 = ", \"time\": \""
+        # paylodmsg4 = "\", \"is_blacklist\":"
+        # paylodmsg5 = ", \"to_device\": \""
+        # paylodmsg6 = "\"}"
+        # paylodmsg = "{}{}{}{}{}{}{}{}{}{}{}{}".format(
+        #     paylodmsg0, paylodmsg1, rand_str(4), paylodmsg2, temperature, paylodmsg3,
+        #     str(machine_date), paylodmsg4, False, paylodmsg5, cid, paylodmsg6)
 
-        # paylodmsg = {
-        #     "log_id": rand_str(4),
-        #     "temperature": temperature,
-        #     "time": str(machine_date),
-        #     "is_blacklist": False,
-        #     "to_device": cid
-        # }
+        paylodmsg_json = {
+            "log_id": rand_str(4),
+            "temperature": temperature,
+            "time": str(machine_date),
+            "is_blacklist": False,
+            "to_device": cid
+        }
 
-        paylodmsg = json.dumps(paylodmsg)
-        paylodmsg_json = json.loads(paylodmsg)
+        # paylodmsg = json.dumps(paylodmsg)
+        # paylodmsg_json = json.loads(paylodmsg)
         mqttc.publish("ElectronicsInnovation", paylodmsg_json,
                       qos=1)  # topic: temperature # Publishing Temperature values
         print("msg sent: ElectronicsInnovation")  # Print sent temperature msg on console

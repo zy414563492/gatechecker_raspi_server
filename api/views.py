@@ -129,46 +129,31 @@ def face(request):
     temperature = result.get("temperature")
     facemask = result.get("facemask")
 
-    init_date = datetime.datetime.strptime('1970-01-01T00:00:00Z', '%Y-%m-%dT%H:%M:%SZ')
+    init_date = datetime.datetime.strptime('1970-01-01 00:00:00', '%Y-%m-%d%H:%M:%S')
     machine_time = datetime.timedelta(seconds=int(time))
     machine_date = init_date + machine_time
+    machine_date_aws_time = machine_date.strftime('%Y-%m-%dT%H:%M:%SZ')
     # print(machine_date)
+    print("machine_date_aws_time: ", machine_date_aws_time)
     # print(machine_date.strftime('%Y-%m-%d %H:%M:%S'))  # 这个也可以，适用于加减的时间带小数点却也像让其输出格式和输入一致的情况
 
     paylodmsg = {}
 
     if connflag is True:
-        # ethName = getEthName()
-        # ethMAC = getMAC(ethName)
-        # macIdStr = ethMAC
-        # randomNumber = uniform(20.0, 25.0)
-        # random_string = get_random_string(8)
-
-        # paylodmsg0 = "{"
-        # paylodmsg1 = "\"log_id\": \""
-        # paylodmsg2 = "\", \"temperature\":"
-        # paylodmsg3 = ", \"time\": \""
-        # paylodmsg4 = "\", \"is_blacklist\":"
-        # paylodmsg5 = ", \"to_device\": \""
-        # paylodmsg6 = "\"}"
-        # paylodmsg = "{}{}{}{}{}{}{}{}{}{}{}{}".format(
-        #     paylodmsg0, paylodmsg1, rand_str(4), paylodmsg2, temperature, paylodmsg3,
-        #     str(machine_date), paylodmsg4, False, paylodmsg5, cid, paylodmsg6)
-
-        paylodmsg_json = {
+        paylodmsg = {
             "log_id": rand_str(4),
             "temperature": temperature,
-            "time": str(machine_date),
+            "time": machine_date_aws_time,
             "is_blacklist": False,
             "to_device": cid
         }
 
-        # paylodmsg = json.dumps(paylodmsg)
-        # paylodmsg_json = json.loads(paylodmsg)
-        mqttc.publish("ElectronicsInnovation", paylodmsg_json,
+        paylodmsg_jstr = json.dumps(paylodmsg)
+
+        mqttc.publish("ElectronicsInnovation", paylodmsg_jstr,
                       qos=1)  # topic: temperature # Publishing Temperature values
         print("msg sent: ElectronicsInnovation")  # Print sent temperature msg on console
-        print(paylodmsg_json)
+        print(paylodmsg_jstr)
 
     else:
         print("waiting for connection...")

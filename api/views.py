@@ -148,13 +148,12 @@ def face(request):
         paylodmsg1 = "\"log_id\": \""
         paylodmsg2 = "\", \"temperature\":"
         paylodmsg3 = ", \"time\": \""
-        # paylodmsg4 = "\", \"is_blacklist\":"
-        # paylodmsg5 = ", \"to_device\": \""
+        paylodmsg4 = "\", \"is_blacklist\":"
+        paylodmsg5 = ", \"to_device\": \""
         paylodmsg6 = "\"}"
-        paylodmsg = "{}{}{}{}{}{}{}{}".format(
+        paylodmsg = "{}{}{}{}{}{}{}{}{}{}{}{}".format(
             paylodmsg0, paylodmsg1, rand_str(4), paylodmsg2, temperature, paylodmsg3,
-            # str(machine_date), paylodmsg4, "False", paylodmsg5, cid, paylodmsg6)
-            str(machine_date), paylodmsg6)
+            str(machine_date), paylodmsg4, False, paylodmsg5, cid, paylodmsg6)
 
         # paylodmsg = {
         #     "log_id": rand_str(4),

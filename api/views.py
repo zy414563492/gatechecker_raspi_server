@@ -129,7 +129,7 @@ def face(request):
     temperature = result.get("temperature")
     facemask = result.get("facemask")
 
-    init_date = datetime.datetime.strptime('1970-01-01 00:00:00', '%Y-%m-%d%H:%M:%S')
+    init_date = datetime.datetime.strptime('1970-01-01 00:00:00', '%Y-%m-%d %H:%M:%S')
     machine_time = datetime.timedelta(seconds=int(time))
     machine_date = init_date + machine_time
     machine_date_aws_time = machine_date.strftime('%Y-%m-%dT%H:%M:%SZ')

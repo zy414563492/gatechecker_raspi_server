@@ -145,9 +145,9 @@ def face(request):
         # random_string = get_random_string(8)
 
         paylodmsg0 = "{"
-        paylodmsg1 = "\"mac_Id\": \""
-        paylodmsg2 = "\", \"random_number\":"
-        paylodmsg3 = ", \"random_string\": \""
+        paylodmsg1 = "\"log_id\": \""
+        paylodmsg2 = "\", \"temperature\":"
+        paylodmsg3 = ", \"time\": \""
         # paylodmsg4 = "\", \"is_blacklist\":"
         # paylodmsg5 = ", \"to_device\": \""
         paylodmsg6 = "\"}"

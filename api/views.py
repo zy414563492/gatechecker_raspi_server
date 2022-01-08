@@ -151,17 +151,17 @@ def face(request):
         paylodmsg4 = "\", \"is_blacklist\":"
         paylodmsg5 = ", \"to_device\": \""
         paylodmsg6 = "\"}"
-        # paylodmsg = "{}{}{}{}{}{}{}{}{}{}{}{}".format(
-        #     paylodmsg0, paylodmsg1, rand_str(4), paylodmsg2, temperature, paylodmsg3,
-        #     str(machine_date), paylodmsg4, False, paylodmsg5, cid, paylodmsg6)
+        paylodmsg = "{}{}{}{}{}{}{}{}{}{}{}{}".format(
+            paylodmsg0, paylodmsg1, rand_str(4), paylodmsg2, temperature, paylodmsg3,
+            str(machine_date), paylodmsg4, False, paylodmsg5, cid, paylodmsg6)
 
-        paylodmsg = {
-            "log_id": rand_str(4),
-            "temperature": temperature,
-            "time": str(machine_date),
-            "is_blacklist": False,
-            "to_device": cid
-        }
+        # paylodmsg = {
+        #     "log_id": rand_str(4),
+        #     "temperature": temperature,
+        #     "time": str(machine_date),
+        #     "is_blacklist": False,
+        #     "to_device": cid
+        # }
 
         paylodmsg = json.dumps(paylodmsg)
         paylodmsg_json = json.loads(paylodmsg)

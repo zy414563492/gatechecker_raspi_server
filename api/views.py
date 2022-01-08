@@ -144,20 +144,22 @@ def face(request):
         # randomNumber = uniform(20.0, 25.0)
         # random_string = get_random_string(8)
 
-        # paylodmsg0 = "{"
-        # paylodmsg1 = "\"log_id\": \""
-        # paylodmsg2 = "\", \"random_number\":"
-        # paylodmsg3 = ", \"random_string\": \""
-        # paylodmsg4 = "\"}"
-        # paylodmsg = "{} {} {} {} {} {} {} {}".format(paylodmsg0, paylodmsg1, macIdStr, paylodmsg2, randomNumber,
-        #                                              paylodmsg3, random_string, paylodmsg4)
-        paylodmsg = {
-            "log_id": rand_str(4),
-            "temperature": temperature,
-            "time": str(machine_date),
-            "is_blacklist": False,
-            "to_device": cid
-        }
+        paylodmsg0 = "{"
+        paylodmsg1 = "\"log_id\": \""
+        paylodmsg2 = "\", \"temperature\":"
+        paylodmsg3 = ", \"time\": \""
+        paylodmsg4 = "\", \"is_blacklist\":"
+        paylodmsg5 = ", \"to_device\": \""
+        paylodmsg6 = "\"}"
+        paylodmsg = "{} {} {} {} {} {} {} {}".format(paylodmsg0, paylodmsg1, rand_str(4), paylodmsg2, temperature,
+                                                     paylodmsg3, time, paylodmsg4, False, paylodmsg5, cid, paylodmsg6)
+        # paylodmsg = {
+        #     "log_id": rand_str(4),
+        #     "temperature": temperature,
+        #     "time": str(machine_date),
+        #     "is_blacklist": False,
+        #     "to_device": cid
+        # }
 
         paylodmsg = json.dumps(paylodmsg)
         paylodmsg_json = json.loads(paylodmsg)

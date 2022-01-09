@@ -141,7 +141,7 @@ def face(request):
 
     if connflag is True:
         paylodmsg = {
-            "log_id": rand_str(4),
+            # "log_id": rand_str(4),
             "temperature": temperature,
             "time": machine_date_aws_time,
             "is_blacklist": False,

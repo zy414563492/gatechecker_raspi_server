@@ -139,7 +139,7 @@ def face(request):
 
     paylodmsg = {}
 
-    if connflag is True:
+    if connflag is True and temperature > 0:
         paylodmsg = {
             "id": rand_str(8),
             "__typename": 'Log',
